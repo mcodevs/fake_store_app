@@ -1,6 +1,6 @@
 import 'package:fake_store_app/src/common/utils/extensions/extensions.dart';
 
-abstract class ApiConst {
+abstract final class ApiConst {
   /// Base URL path
   static const baseUrl = "https://fakestoreapi.com";
 
