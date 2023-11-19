@@ -29,7 +29,7 @@ class ProductModel {
     };
   }
 
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
+  factory ProductModel.fromMap(Map<String, Object?> map) {
     return ProductModel(
       id: map['id'] as int,
       title: map['title'] as String,
@@ -39,6 +39,13 @@ class ProductModel {
       image: map['image'] as String,
       rating: RateModel.fromMap((map['rating'] as Map).cast<String, Object?>()),
     );
+  }
+
+  static List<ProductModel> fromDynamicToList(dynamic data) {
+    return (data as List)
+        .cast<Map>()
+        .map((e) => ProductModel.fromMap(e.cast<String, Object?>()))
+        .toList();
   }
 }
 

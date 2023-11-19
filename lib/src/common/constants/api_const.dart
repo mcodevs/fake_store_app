@@ -33,6 +33,9 @@ abstract final class ApiConst {
   /// Carts by User ID
   static String cartsByUserID(int userID) => "$allCartsPath/user/$userID";
 
+  /// Login path
+  static String loginPath = "$baseUrl/auth/login";
+
   /// Query for data range
   static Map<String, Object?> dataRangeQueryParameter({
     DateTime? startDate,
@@ -43,4 +46,19 @@ abstract final class ApiConst {
       if (endDate != null) "enddate": endDate.toStringForAPI(),
     };
   }
+
+  /// Query for sort
+  static Map<String, Object?> sortQueryParameter(bool isDesc) => {
+        "sort": isDesc ? "desc" : "asc",
+      };
+
+  /// Body for login
+  static Map<String, Object?> loginRequestBody({
+    required String username,
+    required String password,
+  }) =>
+      {
+        "username": username,
+        "password": password,
+      };
 }
